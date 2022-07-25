@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/*
+	 함수정의
+	   - 윈도객체에소속된 함수가된다.
+	 */
+	 function head_function(){
+		window.document.write("head_function()<br>");
+	}
+	var name='global 이순신';
+	var msg='global 신에게는 아직 12척의 배가 남아있습니다';
+	
+	function hello1(){
+		var name='local GUEST1';
+		var msg='local 나의 죽음을 적에게 알리지 말라';
+		document.write(name+"님"+msg+"[hello1]<br>");
+		document.write(window.name+"님"+window.msg+"[global]<br>");
+		return;
+	}
+	function hello2(msg){
+		var name="local Guest2";
+		document.write(name+"님 "+msg+"[hello2(msg)]<br>");
+	}
+	function hello3(name,msg){
+		document.write(name+"님 "+msg+"[hello3(name,msg)]<br>" );
+	}
+	function hello4(name,msg,count){
+		for(var i=0;i<count;i++){
+			document.write(name+" 님 "+msg+"[hello4(name,msg,count)]<br>");
+		}
+		document.wirte("for block 밖에서 i="+i+"<br>");
+	}
+	/**** function return****/
+	function add(a,b){
+		var r=a+b;
+		return r;
+	}
+	
+	function sub(a,b){
+		var r=a-b;
+		return r;
+	}
+	
+	function div(a,b){
+		return a/b;
+	}
+	
+	function mul(a,b){
+		return a*b;
+	}
+	
+	function div(a,b){
+		return a%b;
+	}
+	
+	function alert(msg){
+		document.write("<i>내가 만든 경고함수가 (window.alert(msg)함수)를 대체함"+msg+"<br>");
+	}
+	
+</script>
+
+</head>
+<body>
+<h1>자바스크립트함수</h1><hr>
+<div>함수기반언어이다</div>
+<script type="text/javascript">
+	//함수호출
+	head_function();
+	
+	window.hello1();
+	hello2("안녕하세요");
+	hello3("이주희","축하드립니다.")
+	hello4("강주희","합격을 축하드립니다",3);
+	//body_end_function(); == 정의이전에 호출되어서 에러임 
+	
+	var result=add(123,456);
+	document.write("add"+result+"<br>");
+	var result=sub(123,456);
+	document.write("sub"+result+"<br>");
+	var result=mul(1,2);
+	document.write("mul"+result+"<br>");
+	var result=div(1,2);
+	document.write("div"+result+"<br>");
+	window.alert("변경 메세지");
+</script>
+
+<script type="text/javascript">
+	function body_end_function(){
+		document.write("body function()<br>");
+	}
+	body_end_function();
+</script>
+</body>
+</html>

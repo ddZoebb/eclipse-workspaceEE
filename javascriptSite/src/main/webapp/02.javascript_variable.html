@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/*
+변수선언
+   - var키워드를 사용(let)
+   - 타입을 가지지않는다.
+   - 객체멤버변수(attribute,property),멤버메쏘드(function)는 동적생성이가능
+   - var로변수선언시 자동으로 window객체의멤버변수로등록
+   
+*/
+var no=22;
+var name1='이주희';
+var name2='강주희';
+var age=33;
+var weight=56.64;
+var married=true;
+var address=null;
+var gender; //undefined상태
+
+window.height=182.23;
+
+
+</script>
+</head>
+<body>
+<h1>자바스크립트변수</h1><hr>
+
+<script type="text/javascript">
+	console.log(no);
+	console.log(name1);
+	console.log(name2);
+	console.log(age);
+	console.log(weight);
+	console.log(married);
+	console.log(address);
+	console.log(gender);
+	console.log(height);
+	/*
+	BOM
+	*/
+	window.alert('window alert함수호출');
+	var result=window.confirm('삭제할까요?');
+	console.log(result);
+	window.document.write("<ul>");
+	window.document.write("<li>no:"+no);
+	window.document.write("</ul>");
+</script>
+
+</body>
+</html>
