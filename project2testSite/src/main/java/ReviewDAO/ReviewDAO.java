@@ -2,6 +2,9 @@ package ReviewDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -9,6 +12,7 @@ import javax.sql.DataSource;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 import reviewDTO.Review;
+import userDTO.Product;
 
 public class ReviewDAO {
 
@@ -106,6 +110,141 @@ public class ReviewDAO {
 		}
 		
 		return rowCount;
+	}
+	
+	public List<Review> selectReviewById(Review review) throws Exception{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs=null;
+		List<Review> reviewList=new ArrayList<Review>();
+		
+		try {
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement(ReviewSQL.REVIEW_SELECT_BY_ID);
+			pstmt.setString(1, review.getUser_id());
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+		//int r_no, String r_title, String r_date, int r_stargrade, String r_content, String user_id,Product product
+				reviewList.add(new Review(rs.getInt("r_no"), 
+						rs.getString("r_title"), 
+						rs.getString("r_date"), 
+						rs.getInt("r_stargrade"), 
+						rs.getString("r_content"), 
+						rs.getString("user_id"), 
+	//int p_no, String p_name, String p_price, String p_image, String p_desc, String p_click_count,int category_no						
+						 new Product(rs.getInt("p_no"), 
+									rs.getString("p_name"), 
+									rs.getInt("p_price"), 
+									rs.getString("p_image"), 
+									rs.getString("p_desc"), 
+									rs.getInt("p_click_count"),
+									rs.getInt("category_no")
+									)
+						));
+						}			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+		
+		return reviewList;
+	}
+	
+	public List<Review> selectReviewByP(Review review) throws Exception{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs=null;
+		List<Review> reviewList=new ArrayList<Review>();
+		
+		try {
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement(ReviewSQL.REVIEW_SELECT_BY_P);
+			pstmt.setInt(1, review.getProduct().getP_no());
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+						reviewList.add(new Review(
+								rs.getInt("r_no"), 
+								rs.getString("r_title"), 
+								rs.getString("r_date"), 
+								rs.getInt("r_stargrade"), 
+								rs.getString("r_content"), 
+								rs.getString("user_id"), 
+								 new Product(
+//int p_no, String p_name, int p_price, String p_image, String p_desc, int p_click_count,int category_no									 
+										 rs.getInt("p_no"), 
+										 rs.getString("p_name"), 
+										 rs.getInt("p_price"), 
+										 rs.getString("p_image"), 
+										 rs.getString("p_desc"), 
+										 rs.getInt("p_click_count"), 
+										 rs.getInt("category_no"))
+								 
+											)
+								);
+								}		
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+		
+		return reviewList;
+		
+	}
+	
+	public Review selectReviewOne(Review review) throws Exception{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs=null;
+		Review findReview=null;
+		
+		try {
+			con=dataSource.getConnection();
+			pstmt=con.prepareStatement(ReviewSQL.REVIEW_SELECT);
+			pstmt.setInt(1, review.getR_no());
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				findReview=new Review(rs.getInt("r_no"), 
+						rs.getString("r_title"), 
+						rs.getString("r_date"), 
+						rs.getInt("r_stargrade"), 
+						rs.getString("r_content"), 
+						rs.getString("user_id"),  
+						new Product(rs.getInt("p_no"), 
+								rs.getString("p_name"), 
+								rs.getInt("p_price"), 
+								rs.getString("p_image"), 
+								rs.getString("p_desc"), 
+								rs.getInt("p_click_count"),
+								rs.getInt("category_no")
+								));
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+		
+		return findReview;
 	}
 
 }

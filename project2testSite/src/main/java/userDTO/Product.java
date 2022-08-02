@@ -1,18 +1,6 @@
 package userDTO;
 
 public class Product {
-	/*
-	이름            널?       유형            
-			------------- -------- ------------- 
-			P_NO          NOT NULL NUMBER(10)    
-			P_NAME                 VARCHAR2(50)  
-			P_PRICE                NUMBER(10)    
-			P_IMAGE                VARCHAR2(100) 
-			P_DESC                 VARCHAR2(200) 
-			P_CLICK_COUNT          VARCHAR2(10)  
-			CATEGORY_NO            NUMBER(10)  
-			*/
-	
 	private int p_no;
 	private String p_name;
 	private int p_price;
@@ -20,7 +8,7 @@ public class Product {
 	private String p_desc;
 	private int p_click_count;
 	private int category_no;
-
+	
 	public Product() {
 		// TODO Auto-generated constructor stub
 	}
@@ -98,8 +86,7 @@ public class Product {
 		return "Product [p_no=" + p_no + ", p_name=" + p_name + ", p_price=" + p_price + ", p_image=" + p_image
 				+ ", p_desc=" + p_desc + ", p_click_count=" + p_click_count + ", category_no=" + category_no + "]";
 	}
-	
-	
-	
 
+	
+	
 }

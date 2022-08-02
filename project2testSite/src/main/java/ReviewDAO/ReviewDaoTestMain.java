@@ -15,6 +15,16 @@ public class ReviewDaoTestMain {
 	
 		System.out.println("리뷰삭제");
 		System.out.println(reviewDao.deleteReview(new Review(18, null, null, 0, null, null, null)));
+		
+		System.out.println("회원의 리뷰 목록");
+		System.out.println(reviewDao.selectReviewById(new Review(0, null, null, 0, null, id, null)));
+		
+		System.out.println("상품의 리뷰 목록");
+		
+		System.out.println(reviewDao.selectReviewByP(new Review(0, null, null, 0, null, null, new Product(8, null, 0, null, null, 0, 0))));
+		
+		System.out.println("리뷰 1개 출력");
+		System.out.println(reviewDao.selectReviewOne(new Review(17, null, null, 0, null, null, null)));
 	}
 	
 	

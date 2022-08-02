@@ -14,7 +14,7 @@ public class ReviewSQL {
 	="select * from review r join product p on r.p_no=p.p_no where user_id=?";
 			
 	public final static String REVIEW_SELECT_BY_P
-	="select * from review where p_no=?";
+	="SELECT * FROM review r join product p on r.p_no=p.p_no where p.p_no=?";
 	
 	public final static String REVIEW_SELECT
 	="select * from review r join product p on r.p_no=p.p_no where r.r_no=?";
