@@ -138,6 +138,14 @@
 											value="<%=fuser.getEmail()%>">
 										</td>
 									</tr>
+									<tr>
+										<td width=100 align=center bgcolor="E6ECDE" height="22">포인트</td>
+										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
+											<input type="text" style="width: 150px" name="email"
+											value="1000">
+										</td>
+									</tr>
+									
 								</table>
 							</form> <br />
 
