@@ -63,7 +63,7 @@
 			f.password.select();
 			return;
 		}
-		document.f.action = "user_write_action.jsp";
+		document.f.action = "user_write_action.do";
 		document.f.method='POST';
 		document.f.submit();
 	}

@@ -10,8 +10,8 @@
 	2. 세션의 sUserId를 사용해서 UserService.findUser()메쏘드호출
 	3. 반환된 User객체를 form  element  value 값으로 출력
 	*/
-	UserService userService=new UserService();
-	User loginUser=userService.findUser(sUserId);
+	User loginUser=(User)request.getAttribute("loginUser");
+	
 	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -50,11 +50,11 @@
 			return false;
 		}
 
-		document.f.action = "user_modify_action.jsp";
+		document.f.action = "user_modify_action.do";
 		document.f.submit();
 	}
 	function userMain() {
-		document.f.action = "user_main.jsp";
+		document.f.action = "user_main.do";
 		document.f.submit();
 	}
 </script>

@@ -37,7 +37,7 @@
 			return;
 		}
 
-		document.f.action = "user_login_action.jsp";
+		document.f.action = "user_login_action.do";
 		document.f.method='POST';
 		document.f.submit();
 	}

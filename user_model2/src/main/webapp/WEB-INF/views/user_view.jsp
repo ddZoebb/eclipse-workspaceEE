@@ -1,8 +1,14 @@
 
+<%@page import="com.itwill.user.User"%>
+<%@page import="com.itwill.user.UserService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@include file="user_login_check.jspf" %>
 
+<%
 
+User user=(User)request.getAttribute("user");
+%>
 
 
 
@@ -16,12 +22,12 @@
 <script type="text/javascript">
 	
 	function userModifyForm() {
-		location.href='user_modify_form.jsp'
+		location.href='user_modify_form.do'
 	}
 
 	function userRemove() {
 		if (window.confirm("정말 탈퇴하시겠습니까?")) {
-			window.document.f.action = "user_remove_action.jsp";
+			window.document.f.action = "user_remove_action.do";
 			document.f.method='POST';
 			document.f.submit();
 		}
@@ -54,7 +60,7 @@
 </p>
 <ul>
 	
-		<li><a href="">guard1 님</a></li>
+		<li><a href=""><%=user.getUserId() %> 님</a></li>
 		<li><a href="user_view.jsp">내정보</a></li>
 		<li><a href="user_logout_action.jsp">로그아웃</a></li>
 	
@@ -87,20 +93,20 @@
 										<td width=100 align=center bgcolor="E6ECDE" height="22">사용자
 											아이디</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10">
-											guard1
+											<%=user.getUserId() %>
 										</td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이름</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10">
-											김경수
+											<%=user.getName() %>
 										</td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이메일
 											주소</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10">
-											guard111@korea.com
+											<%=user.getEmail() %>
 										</td>
 									</tr>
 								</table>
