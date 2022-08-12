@@ -10,7 +10,7 @@ public class UserLoginFormController implements Controller{
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		
-		String forwardPath="";
+		String forwardPath="forward:/WEB-INF/views/user_login_form.jsp";
 		return forwardPath;
 	}
 

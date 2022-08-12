@@ -9,7 +9,7 @@ public class UserWriteFormController implements Controller{
 
 	@Override
 	public String handleRequest(HttpServletRequest arg0, HttpServletResponse arg1) {
-		String forwardPath="";
+		String forwardPath="forward:/WEB-INF/views/user_write_form.jsp";
 		return forwardPath;
 	}
 

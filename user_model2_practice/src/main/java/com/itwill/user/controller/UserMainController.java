@@ -6,12 +6,11 @@ import javax.servlet.http.HttpSession;
 
 import com.itwill.summer.Controller;
 
-public class UserMainController implements Controller{
+public class UserMainController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		
-		return "";
+		return "forward:/WEB-INF/views/user_main.jsp";
 	}
 
 }
