@@ -29,8 +29,8 @@ public class BasicDataSourceExample {
 		BasicDataSource basicDataSource = new BasicDataSource();
 		basicDataSource.setDriverClassName("oracle.jdbc.OracleDriver");
 		basicDataSource.setUrl("jdbc:oracle:thin:@182.237.126.19:1521:XE");
-		basicDataSource.setUsername("jdeveloper00");
-		basicDataSource.setPassword("jdeveloper00");
+		basicDataSource.setUsername("jdeveloper17");
+		basicDataSource.setPassword("jdeveloper17");
 		/******************** << javax.sql.DataSource >> **************************/
 		DataSource dataSource = (DataSource) basicDataSource;
 		Connection con = dataSource.getConnection();
