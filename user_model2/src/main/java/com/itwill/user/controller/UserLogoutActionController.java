@@ -10,13 +10,7 @@ public class UserLogoutActionController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		String forwardPath="";
-		/*************/
-		String sUserId=(String)request.getSession().getAttribute("sUserId");
-		if(sUserId==null){
-			forwardPath="redirect:user_main.do";
-			return forwardPath;
-		}
-		/*************/
+		
 		
 		request.getSession().invalidate();
 		forwardPath= "redirect:user_main.do";

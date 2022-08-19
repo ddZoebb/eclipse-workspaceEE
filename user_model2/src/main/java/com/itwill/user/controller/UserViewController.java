@@ -18,13 +18,7 @@ public class UserViewController implements Controller{
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		String forwardPath="";
-		/*************/
 		String sUserId=(String)request.getSession().getAttribute("sUserId");
-		if(sUserId==null){
-			forwardPath="redirect:user_main.do";
-			return forwardPath;
-		}
-		/*************/
 		try {
 		User loginUser=userService.findUser(sUserId);
 		request.setAttribute("user", loginUser);
